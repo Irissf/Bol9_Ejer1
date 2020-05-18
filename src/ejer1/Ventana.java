@@ -12,7 +12,7 @@ public class Ventana extends JFrame {
     private JButton btn1;
     private JButton btn2;
     private JLabel lbl1;
-    boolean cambiarTitulo = true;
+    String titulo = "Control de Ratón";
     int rojo = 237;
     int verde = 217;
     int azul = 223;
@@ -69,14 +69,12 @@ public class Ventana extends JFrame {
         @Override
         public void mouseMoved(java.awt.event.MouseEvent e) {
 
-            if (Ventana.this.cambiarTitulo == true) {
-                if (e.getSource() != btn1 && e.getSource() != btn2) {
-                    Ventana.this.setTitle(String.format("Control de ratón - (X:%d, Y:%d)", e.getX(), e.getY()));
-                    x = e.getX();
-                    y = e.getY();
-                } else {
-                    Ventana.this.setTitle(String.format("Control de ratón - (X:%d, Y:%d)", e.getX() + x, e.getY() + y));
-                }
+            if (e.getSource() != btn1 && e.getSource() != btn2) {
+                Ventana.this.setTitle(String.format("%s - (X:%d, Y:%d)",Ventana.this.titulo, e.getX(), e.getY()));
+                x = e.getX();
+                y = e.getY();
+            } else {
+                Ventana.this.setTitle(String.format("%s - (X:%d, Y:%d)",Ventana.this.titulo, e.getX() + x, e.getY() + y));
             }
 
         }
@@ -112,10 +110,9 @@ public class Ventana extends JFrame {
 
         @Override
         public void mouseExited(MouseEvent e) {
-            if (Ventana.this.cambiarTitulo==true) {
-                super.mouseExited(e);
-                Ventana.this.setTitle("Control de Ratón");
-            }
+
+            super.mouseExited(e);
+            Ventana.this.setTitle(titulo);
 
         }
     }

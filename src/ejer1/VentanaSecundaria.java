@@ -66,7 +66,7 @@ public class VentanaSecundaria extends JDialog implements ActionListener, ItemLi
     public void actionPerformed(ActionEvent e) {
         Ventana ventanaAnterior = (Ventana)this.getOwner();
         ventanaAnterior.setTitle(titulo.getText());
-        ventanaAnterior.cambiarTitulo=false;
+        ventanaAnterior.titulo = titulo.getText();
     }
 
     @Override
